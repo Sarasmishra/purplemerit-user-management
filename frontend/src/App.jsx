@@ -8,7 +8,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <>
+<>
+
+
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
