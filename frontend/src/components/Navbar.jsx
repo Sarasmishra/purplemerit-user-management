@@ -17,11 +17,24 @@ export default function Navbar() {
     navigate("/login");
   };
 
+    // Decide where logo should navigate
+  const handleLogoClick = () => {
+    if (!user) {
+      navigate("/login");
+    } else if (user.role === "admin") {
+      navigate("/admin/users");
+    } else {
+      navigate("/profile");
+    }
+  };
   return (
     <nav className="border-b border-gray-300 px-6 py-3 flex justify-between items-center">
-      <Link to="/" className="font-semibold">
+      <button
+        onClick={handleLogoClick}
+        className="font-semibold"
+      >
         PurpleMerit
-      </Link>
+      </button>
 
       <div className="space-x-4 text-sm">
         {!user && (
