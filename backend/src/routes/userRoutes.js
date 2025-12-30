@@ -1,6 +1,9 @@
 import express from "express";
 import { getAllUsers,  activateUser,
-  deactivateUser, } from "../controllers/userController.js";
+  deactivateUser,
+  getProfile,
+  updateProfile,
+  changePassword, } from "../controllers/userController.js";
 import {
   authenticate,
   authorizeAdmin,
@@ -12,6 +15,11 @@ const router = express.Router();
 router.get("/", authenticate, authorizeAdmin, getAllUsers);
 router.patch("/:id/activate", authenticate, authorizeAdmin, activateUser);
 router.patch("/:id/deactivate", authenticate, authorizeAdmin, deactivateUser);
+
+// User self-service routes
+router.get("/profile", authenticate, getProfile);
+router.patch("/profile", authenticate, updateProfile);
+router.patch("/change-password", authenticate, changePassword);
 
 
 export default router;
