@@ -77,6 +77,7 @@ The focus of this project is:
 
 ## 📂 Project Structure
 
+```bash
 purplemerit-user-management/
 │
 ├── backend/
@@ -99,7 +100,7 @@ purplemerit-user-management/
 │ └── main.jsx
 │
 └── README.md
-
+```
 
 ---
 
@@ -121,18 +122,24 @@ VITE_API_BASE_URL=<Your backend api>
 ## 🚀 Local Setup Instructions
 
 ### 1️⃣ Clone Repository
+```
 git clone <YOUR_GITHUB_REPO_URL>
 cd purplemerit-user-management
+```
 
 ### 2️⃣ Backend Setup
+```
 cd backend
 npm install
 npm run dev
+```
 
 ### 3️⃣ Frontend Setup
+```
 cd frontend
 npm install
 npm run dev
+```
 
 ## 🧪 Backend Testing
 Backend unit and integration tests are included.
@@ -166,12 +173,14 @@ npm test
 
 All protected routes require a valid JWT token.
 
+
 ## 🔐 Admin Access
 This application supports role-based access control.
 
 To test admin-specific features such as user listing and activation/deactivation,
 admin credentials are shared separately via email as part of the submission,
 to avoid exposing sensitive data in a public repository.
+
 
 ## 🌐 Live Deployment
 - Frontend (Vercel):
