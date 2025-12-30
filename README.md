@@ -183,8 +183,8 @@ to avoid exposing sensitive data in a public repository.
 
 
 ## 🌐 Live Deployment
-- Frontend (Vercel):
-- Backend (Render/Railway):
+- Frontend (Vercel):https://purplemerit-user-management-fronten.vercel.app/
+- Backend (Railway):https://purplemerit-user-management-backend.onrender.com/
 
 ## 👤 Author
 
