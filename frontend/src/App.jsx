@@ -1,25 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import AdminUsers from "./pages/AdminUsers";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <div className="grid grid-cols-3 gap-4">
-      <li>a</li>
-      <li>b</li>
-      <li>c</li>
-      <li>4</li>
-      <li>5</li>
-    </div>
-<h1 className="text-3xl font-bold underline text-red-500 text-center mt-50">
-  Tailwind Working
-</h1>
-</>
-  )
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
