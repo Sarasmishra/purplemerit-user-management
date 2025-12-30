@@ -150,3 +150,11 @@ export const getCurrentUser = async (req, res) => {
     });
   }
 };
+
+// Handles user logout (client-side token removal)
+export const logout = async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+};
