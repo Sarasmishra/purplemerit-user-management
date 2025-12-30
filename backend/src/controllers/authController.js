@@ -1,10 +1,6 @@
 import { validationResult } from "express-validator";
 import User from "../models/User.js";
-import {
-  hashPassword,
-  comparePassword,
-  generateToken,
-} from "../utils/auth.js";
+import { hashPassword, comparePassword, generateToken } from "../utils/auth.js";
 
 // Handles user signup
 export const signup = async (req, res) => {
@@ -127,6 +123,30 @@ export const login = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Login failed",
+    });
+  }
+};
+
+// Returns currently authenticated user
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch user",
     });
   }
 };
