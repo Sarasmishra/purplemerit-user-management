@@ -8,21 +8,35 @@ export default function ConfirmModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-      <div className="bg-white p-6 rounded max-w-sm w-full">
-        <h2 className="font-semibold mb-2">{title}</h2>
-        <p className="text-sm mb-4">{message}</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      
+      {/* Background overlay with blur */}
+      <div
+        className="absolute inset-0 bg-white/30 backdrop-blur-sm"
+        onClick={onCancel}
+      />
+
+      {/* Modal box */}
+      <div className="relative bg-white rounded-lg shadow-lg w-full max-w-sm p-6">
+        <h2 className="font-semibold text-lg mb-2">
+          {title}
+        </h2>
+
+        <p className="text-sm text-gray-600 mb-6">
+          {message}
+        </p>
 
         <div className="flex justify-end space-x-3">
           <button
             onClick={onCancel}
-            className="px-3 py-1 border rounded"
+            className="px-4 py-1.5 border rounded hover:bg-gray-100"
           >
             Cancel
           </button>
+
           <button
             onClick={onConfirm}
-            className="px-3 py-1 bg-black text-white rounded"
+            className="px-4 py-1.5 bg-black text-white rounded hover:opacity-90"
           >
             Confirm
           </button>
