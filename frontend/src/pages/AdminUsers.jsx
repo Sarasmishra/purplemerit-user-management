@@ -22,25 +22,27 @@ export default function AdminUsers() {
     fetchUsers();
   }, []);
 
-  // Toggle user active status
-  const toggleStatus = async (id, currentStatus) => {
-    try {
-      await api.patch(`/users/${id}/status`, {
-        status: currentStatus === "active" ? "inactive" : "active",
-      });
-
-      // Update UI optimistically
-      setUsers((prev) =>
-        prev.map((u) =>
-          u._id === id
-            ? { ...u, status: u.status === "active" ? "inactive" : "active" }
-            : u
-        )
-      );
-    } catch (err) {
-      alert("Failed to update user status");
+const toggleStatus = async (id, currentStatus) => {
+  try {
+    if (currentStatus === "active") {
+      await api.patch(`/users/${id}/deactivate`);
+    } else {
+      await api.patch(`/users/${id}/activate`);
     }
-  };
+
+    // Update UI after success
+    setUsers((prev) =>
+      prev.map((u) =>
+        u._id === id
+          ? { ...u, status: u.status === "active" ? "inactive" : "active" }
+          : u
+      )
+    );
+  } catch (err) {
+    alert("Failed to update user status");
+  }
+};
+
 
   if (loading) return <p className="p-6">Loading users...</p>;
   if (error) return <p className="p-6 text-red-600">{error}</p>;
