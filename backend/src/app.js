@@ -26,8 +26,14 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.options("*", cors());
 
+// Explicitly handle preflight WITHOUT wildcard routes
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  next();
+});
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
